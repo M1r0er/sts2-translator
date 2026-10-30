@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>杀戮尖塔2 中文翻译器 · 设置</title>
+<style>
+  :root {
+    --bg: #1b1a17;
+    --panel: #262420;
+    --line: #3a3630;
+    --text: #e8e2d6;
+    --muted: #9a9286;
+    --gold: #d8a94a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 28px 20px 48px;
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.65 "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 4px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  h1 img { width: 30px; height: 30px; }
+  .sub { margin: 0 0 26px; color: var(--muted); font-size: 13px; }
+  section {
+    margin-bottom: 22px;
+    padding: 16px 18px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  h2 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .row .label { flex: 1; }
+  .row .label small {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  input[type="text"] {
+    width: 100%;
+    margin-top: 6px;
+    padding: 7px 10px;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    font: inherit;
+    font-size: 13px;
+  }
+  button {
+    padding: 7px 14px;
+    font: inherit;
+    font-size: 13px;
+    color: var(--text);
+    background: var(--line);
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover { filter: brightness(1.2); }
+  button.gold { background: var(--gold); color: #1b1a17; font-weight: 600; }
+  .sites { margin: 8px 0 0; padding: 0; list-style: none; }
+  .sites li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 10px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    word-break: break-all;
+  }
+  .sites .del {
+    flex: none;
+    padding: 3px 9px;
+    font-size: 12px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .sites .del:hover { color: #e07b6a; border-color: #e07b6a; }
+  .empty { color: var(--muted); font-size: 13px; padding: 4px 0; }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; font-size: 13px; }
+  .kv dt { color: var(--muted); }
+  .kv dd { margin: 0; }
+  .status {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    min-height: 18px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1><img src="../icons/icon48.png" alt="">杀戮尖塔2 中文翻译器</h1>
+  <p class="sub">用游戏官方简体中文术语翻译英文攻略站点，不改动原站结构与布局。</p>
+
+  <section>
+    <h2>翻译行为</h2>
+    <div class="row">
+      <div class="label">
+        全局自动翻译
+        <small>打开任意英文页面时自动翻译（默认关闭，建议改用下方站点列表）</small>
+      </div>
+      <input type="checkbox" id="autoTranslate">
+    </div>
+    <div class="row">
+      <div class="label">
+        跳过已标记为不翻译的区域
+        <small>尊重页面上的 <code>translate="no"</code> 与 <code>.notranslate</code></small>
+      </div>
+      <input type="checkbox" id="respectNoTranslate" checked disabled>
+    </div>
+  </section>
+
+  <section>
+    <h2>自动翻译的站点</h2>
+    <div class="row" style="border-bottom:0;padding-bottom:0">
+      <div class="label" style="width:100%">
+        <input type="text" id="newSite" placeholder="例如 slaythespire2.gg 或 sts2.app">
+      </div>
+      <button class="gold" id="addSite">添加</button>
+    </div>
+    <ul class="sites" id="siteList"></ul>
+    <div class="status" id="siteStatus"></div>
+  </section>
+
+  <section>
+    <h2>词典</h2>
+    <dl class="kv" id="dictInfo">
+      <dt>版本</dt><dd id="dictVersion">—</dd>
+      <dt>来源</dt><dd id="dictSource">—</dd>
+      <dt>词条</dt><dd id="dictCounts">—</dd>
+    </dl>
+    <div class="row" style="margin-top:12px">
+      <div class="label">
+        翻译缓存
+        <small>已缓存的机翻句子，清空后下次需重新请求</small>
+      </div>
+      <button id="clearCache">清空缓存</button>
+    </div>
+    <div class="status" id="cacheStatus"></div>
+  </section>
+
+  <section>
+    <h2>使用说明</h2>
+    <div class="label" style="font-size:13px;color:var(--muted);line-height:1.8">
+      1. 打开目标网站，点击工具栏图标或按 <b style="color:var(--text)">Alt+T</b> 即可翻译。<br>
+      2. 卡牌、遗物、关键词使用游戏文件中的官方中文，不会出现机翻错译。<br>
+      3. 站点内容若使用动态加载，翻译会自动跟随新出现的内容。<br>
+      4. 再次点击同一按钮即可完全还原为英文原文。
+    </div>
+  </section>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>

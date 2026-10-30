@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>STS2 Fixture — Cards</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px;
+    font: 15px/1.6 Georgia, "Times New Roman", serif;
+    background: #14130f;
+    color: #d8d2c4;
+  }
+  .layout { display: grid; grid-template-columns: 1fr 260px; gap: 24px; max-width: 980px; }
+  h1 { font-size: 26px; margin: 0 0 6px; color: #e8c97a; }
+  h2 { font-size: 17px; margin: 24px 0 8px; color: #b9a06a; border-bottom: 1px solid #332f28; padding-bottom: 4px; }
+  .card {
+    display: flex;
+    gap: 14px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #1e1c17;
+    border: 1px solid #332f28;
+    border-radius: 8px;
+  }
+  .card .cost {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #3a2f1c;
+    color: #e8c97a;
+    font-weight: bold;
+  }
+  .card .body { flex: 1; min-width: 0; }
+  .card .name { font-weight: bold; font-size: 16px; color: #eee6d4; }
+  .card .meta { font-size: 12px; color: #8d8577; margin-bottom: 6px; }
+  .game-description { margin: 0; }
+  .game-description.upgrade-text { color: #7f8f6a; font-size: 13px; }
+  .kw { color: #8fb8e0; }
+  .kw--muted { color: #6c8298; }
+  .sidebar { font-size: 13px; }
+  .sidebar ul { padding-left: 18px; margin: 6px 0; }
+  .relic { padding: 8px; margin-bottom: 8px; background: #1e1c17; border-radius: 6px; }
+  .relic .rname { color: #e8c97a; font-weight: bold; }
+  .footer { margin-top: 28px; padding-top: 12px; border-top: 1px solid #332f28; font-size: 12px; color: #6f685c; }
+  .tagline { color: #9a9286; font-size: 13px; margin: 0 0 18px; }
+</style>
+</head>
+<body>
+<div class="layout">
+  <main>
+    <h1>Slay the Spire 2 Cards</h1>
+    <p class="tagline">Browse every card in the game. Updated for the current patch.</p>
+
+    <h2>Ironclad</h2>
+
+    <div class="card" data-testid="card-bash">
+      <div class="cost">2</div>
+      <div class="body">
+        <div class="name">Bash</div>
+        <div class="meta">Attack · Basic · Common</div>
+        <p class="game-description" lang="en">Deal 8 damage. Apply 2 <span class="kw">Vulnerable</span>.</p>
+        <p class="game-description upgrade-text" lang="en">Deal 10 damage. Apply 3 <span class="kw kw--muted">Vulnerable</span>.</p>
+      </div>
+    </div>
+
+    <div class="card" data-testid="card-anger">
+      <div class="cost">0</div>
+      <div class="body">
+        <div class="name">Anger</div>
+        <div class="meta">Attack · Common</div>
+        <p class="game-description" lang="en">Deal 6 damage. Add a copy of this card into your <span class="kw">Discard Pile</span>.</p>
+      </div>
+    </div>
+
+    <div class="card" data-testid="card-strike">
+      <div class="cost">1</div>
+      <div class="body">
+        <div class="name">Strike</div>
+        <div class="meta">Attack · Basic</div>
+        <p class="game-description" lang="en">Deal 6 damage.</p>
+      </div>
+    </div>
+
+    <div class="card" data-testid="card-defend">
+      <div class="cost">1</div>
+      <div class="body">
+        <div class="name">Defend</div>
+        <div class="meta">Skill · Basic</div>
+        <p class="game-description" lang="en">Gain 5 <span class="kw">Block</span>.</p>
+      </div>
+    </div>
+
+    <div class="card" data-testid="card-machine">
+      <div class="cost">1</div>
+      <div class="body">
+        <div class="name">Unmapped Test Card</div>
+        <div class="meta">Skill · Rare</div>
+        <!-- 刻意不在官方词典中，用于验证机翻兜底路径 -->
+        <p class="game-description" lang="en">Whenever you play a card, gain 1 <span class="kw">Energy</span> and draw a card.</p>
+      </div>
+    </div>
+
+    <h2>Relics</h2>
+
+    <div class="relic" data-testid="relic-anchor">
+      <div class="rname">Anchor</div>
+      <p class="game-description" lang="en">Start each combat with 10 <span class="kw">Block</span>.</p>
+    </div>
+
+    <div class="relic" data-testid="relic-burning-blood">
+      <div class="rname">Burning Blood</div>
+      <p class="game-description" lang="en">At the end of combat, heal 6 HP.</p>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <h2>Keywords</h2>
+    <ul>
+      <li><span class="kw">Vulnerable</span> — takes more damage</li>
+      <li><span class="kw">Weak</span> — deals less damage</li>
+      <li><span class="kw">Exhaust</span> — removed for the rest of combat</li>
+    </ul>
+    <h2>Links</h2>
+    <ul>
+      <li><a href="/cards">All Cards</a></li>
+      <li><a href="/relics">All Relics</a></li>
+      <li><a href="https://example.com">External</a></li>
+    </ul>
+    <div class="footer">
+      <span>Slay the Spire 2 Wiki</span> · <span>Patch notes</span>
+    </div>
+  </aside>
+</div>
+</body>
+</html>

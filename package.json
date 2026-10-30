@@ -1,0 +1,17 @@
+{
+  "name": "sts2-translator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Slay the Spire 2 glossary-aware page translator (Chrome MV3)",
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"test/unit/*.test.mjs\"",
+    "build:glossary": "node tools/build-glossary.mjs",
+    "check:coverage": "node tools/check-coverage.mjs",
+    "build:zip": "node tools/package.mjs",
+    "fetch:data": "node tools/fetch-data.mjs"
+  },
+  "dependencies": {
+    "jsdom": "^25.0.1"
+  }
+}

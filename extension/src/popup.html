@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg: #1b1a17;
+    --panel: #262420;
+    --line: #3a3630;
+    --text: #e8e2d6;
+    --muted: #9a9286;
+    --gold: #d8a94a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    width: 300px;
+    background: var(--bg);
+    color: var(--text);
+    font: 13px/1.5 "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  header img { width: 22px; height: 22px; }
+  header h1 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .3px;
+  }
+  main { padding: 12px 14px; }
+  .host {
+    font-size: 12px;
+    color: var(--muted);
+    word-break: break-all;
+    margin-bottom: 10px;
+  }
+  button.primary {
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1b1a17;
+    background: var(--gold);
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button.primary:hover { filter: brightness(1.08); }
+  button.primary:disabled { opacity: .5; cursor: default; }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .row:last-of-type { border-bottom: 0; }
+  .row label { color: var(--muted); font-size: 12px; }
+  .stats {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: var(--panel);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .stats b { color: var(--text); font-weight: 600; }
+  .hint {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .hint kbd {
+    padding: 1px 4px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: inherit;
+  }
+  footer {
+    padding: 8px 14px 12px;
+    text-align: right;
+  }
+  footer a {
+    color: var(--muted);
+    font-size: 11px;
+    text-decoration: none;
+  }
+  footer a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+<header>
+  <img src="../icons/icon48.png" alt="">
+  <h1>杀戮尖塔2 中文翻译器</h1>
+</header>
+
+<main>
+  <div class="host" id="host">—</div>
+  <button class="primary" id="toggle" disabled>正在检查页面…</button>
+
+  <div class="row">
+    <label for="siteAuto">本站点自动翻译</label>
+    <input type="checkbox" id="siteAuto">
+  </div>
+
+  <div class="stats" id="stats" hidden></div>
+
+  <div class="hint">
+    快捷键 <kbd id="shortcut">Alt+T</kbd> 也可以翻译 / 还原。<br>
+    右键页面也有相同菜单。
+  </div>
+</main>
+
+<footer>
+  <a href="#" id="options">设置</a>
+</footer>
+
+<script src="popup.js"></script>
+</body>
+</html>

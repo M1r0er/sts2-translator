@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.cache/
+research/
+
+# 从游戏文件反编译出的原始本地化数据，版权归游戏发行商所有，
+# 不随本仓库分发。需要时运行 `npm run fetch:data` 自行拉取。
+data-source/
