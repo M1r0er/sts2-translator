@@ -557,6 +557,8 @@ const dict = {
 
 const json = JSON.stringify(dict);
 writeFileSync(join(OUT, 'sts2-dict.json'), json, 'utf8');
+// research/ 在 .gitignore 里（放的是调研中间产物），新克隆下来时不存在，需要自己建。
+mkdirSync(join(ROOT, 'research'), { recursive: true });
 writeFileSync(join(ROOT, 'research', 'build-warnings.txt'), warnings.join('\n'), 'utf8');
 
 console.log('=== 构建结果 ===');
